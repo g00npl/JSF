@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  template="/templates/default.xhtml">
+  
+  <ui:define name="heading">
+     <p>User data</p>
+  </ui:define>
+
+  <ui:define name="content">
+      <h:panelGrid id="infoname" columns="2">
+        <h:outputText value="Name: " />
+        <h:outputText value="#{userBean.name}" />
+                <h:outputText value="Email: " />
+        <h:outputText value="#{userBean.email}" />
+                        <h:outputText value="Pesel : " />
+        <h:outputText value="#{userBean.pesel}" />
+      </h:panelGrid>
+
+      <h:panelGrid id="infoyob" columns="2">
+        <h:outputText value="Year of birth: " />
+        <h:outputText value="#{userBean.yob}" />
+      </h:panelGrid>
+       <h:panelGrid id="miesiac" columns="2">
+        <h:outputText value="Month of birth: " />
+        <h:outputText value="#{userBean.miesiac}" />
+      </h:panelGrid>
+      
+      <h:form>
+        <h:commandButton value=" Logout " action="#{userBean.logout}" />
+      </h:form>
+  </ui:define>
+  
+  </ui:composition>

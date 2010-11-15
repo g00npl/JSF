@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  template="/templates/default.xhtml">
+
+  <ui:define name="heading">
+    <p>Dane usera</p>
+  </ui:define>
+
+  <ui:define name="content">
+
+    <h:form id="userform">
+    
+      <f:event type="postValidate" 
+       listener="#{userBean.validatePesel}" />
+      
+      <h:panelGrid columns="2">
+        <h:outputText value="Name" />
+        <h:inputText value="#{userBean.name}" />
+        <h:outputText value="Year of birth" />
+        <h:inputText id="yob" value="#{userBean.yob}" required="true" />
+        <h:outputText value="email" />
+        <h:inputText value="#{userBean.email}" validator="#{userBean.validateEmail}" required="true" />
+         <h:outputText value="Miesiac urodzenia: " />
+        <h:inputText id="miesiac" value="#{userBean.miesiac}" required="true" />
+        <h:outputText value="pesel" />
+        <h:inputText id="pesel" value="#{userBean.pesel}" validate="" required="true" >
+          <f:validateLength minimum="11" maximum="11"></f:validateLength>
+        </h:inputText>
+        <h:commandButton value=" OK " action="showuser" />
+      </h:panelGrid>
+
+      <h:panelGrid>
+        <h:messages showDetail="#{true}" showSummary="#{false}" />
+      </h:panelGrid>
+
+      <h:panelGrid id="infoname" columns="2">
+        <h:outputText value="Name: " />
+        <h:outputText value="#{userBean.name}" />
+        <h:outputText value="Email: " />
+        <h:outputText value="#{userBean.email}" />
+                <h:outputText value="Pesel: " />
+        <h:outputText value="#{userBean.pesel}" />
+      </h:panelGrid>
+
+      <h:panelGrid id="infoyob" columns="2">
+        <h:outputText value="Year of birth: " />
+        <h:outputText value="#{userBean.yob}" />
+      </h:panelGrid>
+
+    </h:form>
+  </ui:define>
+
+</ui:composition>
